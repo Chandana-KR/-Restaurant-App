@@ -1,0 +1,136 @@
+.dish-Item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #a9a9a9;
+  width: 95%;
+  margin-bottom: 15px;
+}
+.availability {
+  border-width: 1px;
+  border-style: solid;
+  border-color: green;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;
+}
+.circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border-width: 0px;
+  background-color: green;
+}
+.not-available {
+  border-width: 1px;
+  border-style: solid;
+  border-color: red;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;
+}
+.red-circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border-width: 0px;
+  background-color: red;
+}
+.dish-details-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.dish-name {
+  font-family: 'Roboto';
+  color: #000000;
+  font-size: 24px;
+  font-weight: 600;
+}
+.currency-container {
+  display: flex;
+  align-items: center;
+}
+.currency {
+  font-family: 'Roboto';
+  color: #282424;
+  font-size: 18px;
+  font-weight: 400;
+  margin-right: 10px;
+}
+.calories-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.description {
+  font-family: 'Roboto';
+  color: #a9a9a9;
+  font-size: 18px;
+  font-weight: 400;
+  margin-right: 25px;
+}
+.calories {
+  font-family: 'Roboto';
+  color: orange;
+  font-size: 18px;
+  font-weight: 600;
+  align-self: center;
+}
+.dish-image {
+  height: 100px;
+  width: 100px;
+}
+.button-container {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  height: 40px;
+  width: 100px;
+  background-color: rgb(4, 100, 4);
+  border-radius: 20px;
+  justify-content: space-around;
+}
+.button {
+  background-color: transparent;
+  outline: none;
+  border-width: 0px;
+  cursor: pointer;
+}
+.icons {
+  font-size: 16px;
+  color: #ffffff;
+}
+.count {
+  font-family: 'Roboto';
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+}
+.customization {
+  font-family: 'Roboto';
+  color: blue;
+  font-size: 18px;
+}
+.not-available1 {
+  font-family: 'Roboto';
+  color: red;
+  font-size: 18px;
+}
+@media screen and (min-width: 768px) {
+  .dish-image {
+    width: 200px;
+    height: 200px;
+  }
+}

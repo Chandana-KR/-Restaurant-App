@@ -1,0 +1,43 @@
+.resto-cafe-container {
+  background-color: #ffffff;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.menu-item-container {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.large-menu-item {
+  display: none;
+}
+.dishes-container {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+.dishes-loader-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .resto-cafe-container {
+    min-height: 100vh;
+  }
+  .menu-item-container {
+    justify-content: space-around;
+  }
+
+  .large-menu-item {
+    display: flex;
+    font-family: 'Roboto';
+    font-size: 20px;
+  }
+}
