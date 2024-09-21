@@ -19,9 +19,10 @@
 .dishes-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   list-style-type: none;
 }
-.dishes-loader-container{
+.dishes-loader-container {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -6,14 +6,14 @@ import DishItem from '../DishItem'
 
 import './index.css'
 
-class RestoCafe extends Component {
+class Home extends Component {
   state = {
     menuCategory: [],
     cartItems: [],
     activeCategoryId: null,
     activeCategoryDishes: [],
-    count: 0,
     isLoading: true,
+    count: 0,
   }
 
   componentDidMount() {
@@ -71,14 +71,14 @@ class RestoCafe extends Component {
   }
 
   incrementCount = dish => {
-    const {cartItems} = this.state
+    const {cartItems, count} = this.state
     const isAvailable = cartItems.find(item => item.dishId === dish.dishId)
     if (!isAvailable) {
       const newDish = {...dish, quantity: 1}
 
       this.setState(prevState => ({
         cartItems: [...prevState.cartItems, newDish],
-        count: prevState.count + 1,
+        count: count + 1,
       }))
     } else {
       this.setState(prevState => ({
@@ -159,4 +159,4 @@ class RestoCafe extends Component {
   }
 }
 
-export default RestoCafe
+export default Home

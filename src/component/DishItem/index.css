@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 0px;
+  margin-right: 50px;
 }
 .circle {
   height: 20px;
@@ -38,7 +38,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 0px;
+  margin-right: 50px;
 }
 .red-circle {
   height: 20px;
@@ -50,7 +50,7 @@
 .dish-details-container {
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
+  margin-right: 100px;
 }
 .dish-name {
   font-family: 'Roboto';
@@ -87,10 +87,13 @@
   font-size: 18px;
   font-weight: 600;
   align-self: center;
+  margin-right: 100px;
 }
 .dish-image {
   height: 100px;
   width: 100px;
+  margin-right: 0px;
+  margin-left: 100px;
 }
 .button-container {
   display: flex;
