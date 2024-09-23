@@ -6,13 +6,20 @@ import DishItem from '../DishItem'
 
 import './index.css'
 
+const apiStatus = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  inProgress: 'IN_PROGRESS',
+}
+
 class Home extends Component {
   state = {
     menuCategory: [],
     cartItems: [],
     activeCategoryId: null,
     activeCategoryDishes: [],
-    isLoading: true,
+    status: apiStatus.initial,
     count: 0,
   }
 
@@ -21,6 +28,8 @@ class Home extends Component {
   }
 
   getDishDetails = async () => {
+    this.setState({status: apiStatus.inProgress})
+
     const dishesApiUrl =
       'https://apis2.ccbp.in/restaurant-app/restaurant-menu-list-details'
 
@@ -53,8 +62,10 @@ class Home extends Component {
         menuCategory: updatedMenuCategory,
         activeCategoryId: updatedMenuCategory[0].menuCategoryId,
         activeCategoryDishes: activeCategory,
-        isLoading: false,
+        status: apiStatus.success,
       })
+    } else {
+      this.setState({status: apiStatus.failure})
     }
   }
 
@@ -116,27 +127,8 @@ class Home extends Component {
     </div>
   )
 
-  renderDishes = () => {
-    const {activeCategoryDishes, cartItems} = this.state
-    return (
-      <ul className="dishes-container">
-        {activeCategoryDishes.map(each => (
-          <DishItem
-            dishItem={each}
-            key={each.dishId}
-            cartItems={cartItems}
-            incrementCount={this.incrementCount}
-            decrementCount={this.decrementCount}
-          />
-        ))}
-      </ul>
-    )
-  }
-
-  render() {
+  renderMenu = () => {
     const {menuCategory, activeCategoryId, count} = this.state
-    const {isLoading} = this.state
-
     return (
       <>
         <Header count={count} />
@@ -151,11 +143,55 @@ class Home extends Component {
               />
             ))}
           </ul>
-
-          {isLoading ? this.renderLoader() : this.renderDishes()}
+          <ul className="dishes-container">{this.renderDishes()}</ul>
         </div>
       </>
     )
+  }
+
+  renderDishes = () => {
+    const {activeCategoryDishes, cartItems} = this.state
+    return (
+      <>
+        {activeCategoryDishes.map(each => (
+          <DishItem
+            dishItem={each}
+            key={each.dishId}
+            cartItems={cartItems}
+            incrementCount={this.incrementCount}
+            decrementCount={this.decrementCount}
+          />
+        ))}
+      </>
+    )
+  }
+
+  onClickRetry = () => {
+    this.getDishDetails()
+  }
+
+  failure = () => (
+    <button type="button" onClick={this.onClickRetry}>
+      Retry
+    </button>
+  )
+
+  renderBasedOnStatus = () => {
+    const {status} = this.state
+    switch (status) {
+      case apiStatus.success:
+        return this.renderMenu()
+      case apiStatus.failure:
+        return this.failure()
+      case apiStatus.inProgress:
+        return this.renderLoader()
+      default:
+        return null
+    }
+  }
+
+  render() {
+    return this.renderBasedOnStatus()
   }
 }
 
