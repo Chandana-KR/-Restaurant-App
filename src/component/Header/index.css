@@ -15,9 +15,10 @@
   width: 30px;
   height: 30px;
 }
-.cart-container {
+.header-cart-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .my-orders {
   display: none;
@@ -28,11 +29,21 @@
   border-radius: 50%;
   padding: 5px 10px;
   font-size: 12px;
-  position: absolute;
   top: 10px;
   right: 10px;
 }
-
+.link {
+  text-decoration: none;
+}
+.header-cart-button {
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  border-width: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 @media screen and (min-width: 768px) {
   .my-orders {
     display: flex;

@@ -104,6 +104,7 @@
   background-color: rgb(4, 100, 4);
   border-radius: 20px;
   justify-content: space-around;
+  margin-bottom: 10px;
 }
 .button {
   background-color: transparent;
@@ -130,6 +131,17 @@
   font-family: 'Roboto';
   color: red;
   font-size: 18px;
+}
+.cart-button {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  border-width: 0px;
+  background-color: rgb(5, 5, 104);
+  padding: 10px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  cursor: pointer;
 }
 @media screen and (min-width: 768px) {
   .dish-image {

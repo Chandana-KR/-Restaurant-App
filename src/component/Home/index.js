@@ -16,11 +16,9 @@ const apiStatus = {
 class Home extends Component {
   state = {
     menuCategory: [],
-    cartItems: [],
     activeCategoryId: null,
     activeCategoryDishes: [],
     status: apiStatus.initial,
-    count: 0,
   }
 
   componentDidMount() {
@@ -81,46 +79,6 @@ class Home extends Component {
     })
   }
 
-  incrementCount = dish => {
-    const {cartItems, count} = this.state
-    const isAvailable = cartItems.find(item => item.dishId === dish.dishId)
-    if (!isAvailable) {
-      const newDish = {...dish, quantity: 1}
-
-      this.setState(prevState => ({
-        cartItems: [...prevState.cartItems, newDish],
-        count: count + 1,
-      }))
-    } else {
-      this.setState(prevState => ({
-        cartItems: prevState.cartItems.map(item =>
-          item.dishId === dish.dishId
-            ? {...item, quantity: item.quantity + 1}
-            : item,
-        ),
-        count: prevState.count + 1,
-      }))
-    }
-  }
-
-  decrementCount = dish => {
-    const {cartItems} = this.state
-    const isAlreadyExists = cartItems.find(item => item.dishId === dish.dishId)
-
-    if (isAlreadyExists) {
-      this.setState(prevState => ({
-        cartItems: prevState.cartItems
-          .map(item =>
-            item.dishId === dish.dishId
-              ? {...item, quantity: item.quantity - 1}
-              : item,
-          )
-          .filter(item => item.quantity > 0),
-        count: prevState.count > 0 ? prevState.count - 1 : 0,
-      }))
-    }
-  }
-
   renderLoader = () => (
     <div className="dishes-loader-container">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
@@ -150,17 +108,11 @@ class Home extends Component {
   }
 
   renderDishes = () => {
-    const {activeCategoryDishes, cartItems} = this.state
+    const {activeCategoryDishes} = this.state
     return (
       <>
         {activeCategoryDishes.map(each => (
-          <DishItem
-            dishItem={each}
-            key={each.dishId}
-            cartItems={cartItems}
-            incrementCount={this.incrementCount}
-            decrementCount={this.decrementCount}
-          />
+          <DishItem dishItem={each} key={each.dishId} />
         ))}
       </>
     )
